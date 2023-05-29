@@ -25,8 +25,10 @@ data "http" "ip" {
 }
 
 locals {
-  ip      = chomp(data.http.ip.response_body)
-  ip_cidr = "${chomp(data.http.ip.response_body)}/32"
+  ip          = chomp(data.http.ip.response_body)
+  ip_cidr     = "${chomp(data.http.ip.response_body)}/32"
+  _allowed_ip = data.external.config_json.result.allowed_ip
+  allowed_ip  = [for ip in split(",", local._allowed_ip) : "${ip}/32"]
 }
 
 locals {
@@ -44,6 +46,5 @@ locals {
   cloud_id   = data.external.config_json.result.cloud_id
   folder_id  = data.external.config_json.result.folder_id
   network_id = data.external.config_json.result.network_id
-  allowed_ip = data.external.config_json.result.allowed_ip
 }
 

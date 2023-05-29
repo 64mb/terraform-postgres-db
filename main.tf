@@ -20,7 +20,7 @@ module "postgres_sg" {
       { target = "self_security_group", from_port = 0, to_port = 65535, proto = "ANY" },
       { cidr_v4 = yandex_vpc_subnet.postgres_subnet.v4_cidr_blocks, from_port = 0, to_port = 65535, proto = "ANY" },
       { cidr_v4 = ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"], from_port = 0, to_port = 65535, proto = "ICMP" },
-      { cidr_v4 = [for ip in split(",", local.allowed_ip) : "${ip}/32"], port = 6432, proto = "TCP" },
+      { cidr_v4 = local.allowed_ip, port = 6432, proto = "TCP" },
     ]
   }
 }
