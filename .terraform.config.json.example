@@ -1,0 +1,9 @@
+{
+  "cloud_id": "...",
+  "folder_id": "...",
+  "network_id": "...",
+  "key": "postgres.tfstate",
+  "allowed_ip": "127.0.0.1,127.0.0.1",
+  "postgres_version": "15",
+  "postgres_db_list": "sandbox:pg_trgm:btree_gin,sandbox-test"
+}
