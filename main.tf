@@ -1,4 +1,4 @@
-resource "yandex_kms_symmetric_key" "postgres_kms_key" {
+# resource "yandex_kms_symmetric_key" "postgres_kms_key" {
 #   name              = "postgres-kms-key"
 #   default_algorithm = "AES_256"
 # }
